@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCorp Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --error-color: #ef4444;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        #app {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .section {
+            background-color: var(--card-background);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        p {
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        .back-button:hover {
+            color: var(--text-primary);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section:not(.hidden) {
+            animation: fadeIn 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Starting Page -->
+        <div id="startPage" class="section">
+            <div class="logo-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTzPFGyg8JCSEJwPbZmGPbAjkvmaK6DMrxPg&s" alt="TechCorp Logo" class="logo">
+            </div>
+            <h2>Welcome to TechCorp</h2>
+            <p>Please select your role to continue</p>
+            <div class="button-group">
+                <button id="chooseAdmin">
+                    <i class="fas fa-user-shield"></i> Admin
+                </button>
+                <button id="chooseEmployee">
+                    <i class="fas fa-user"></i> Employee
+                </button>
+            </div>
+        </div>
+
+        <!-- Admin Login -->
+        <div id="adminLogin" class="section hidden">
+            <div class="back-button" onclick="showStartPage()">
+                <i class="fas fa-arrow-left"></i> Back
+            </div>
+            <div class="logo-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTzPFGyg8JCSEJwPbZmGPbAjkvmaK6DMrxPg&s" alt="TechCorp Logo" class="logo">
+            </div>
+            <h2>Admin Login</h2>
+            <p>Enter your credentials to continue(user: username=admin password=admin)</p>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminUsername">Username</label>
+                    <input type="text" id="adminUsername" required placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" required placeholder="Enter your password">
+                </div>
+                <p id="adminLoginError" class="error-message"></p>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+
+        <!-- Employee Login -->
+        <div id="employeeLogin" class="section hidden">
+            <div class="back-button" onclick="showStartPage()">
+                <i class="fas fa-arrow-left"></i> Back
+            </div>
+            <div class="logo-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTzPFGyg8JCSEJwPbZmGPbAjkvmaK6DMrxPg&s" alt="TechCorp Logo" class="logo">
+            </div>
+            <h2>Employee Login</h2>
+            <p>Enter your credentials to continue(username=employee password=employee)</p>
+            <form id="employeeLoginForm">
+                <div class="form-group">
+                    <label for="employeeUsername">Username</label>
+                    <input type="text" id="employeeUsername" required placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="employeePassword">Password</label>
+                    <input type="password" id="employeePassword" required placeholder="Enter your password">
+                </div>
+                <p id="employeeLoginError" class="error-message"></p>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const users = {
+            admin: { username: 'admin', password: 'admin', role: 'admin' },
+            employee: { username: 'employee', password: 'employee', role: 'employee' },
+            user: { username: 'user', password: 'user', role: 'admin' }, // New user added
+            employeeUser: { username: 'employee', password: 'password', role: 'employee' } // New employee added
+        };
+
+        function showAdminLogin() {
+            document.getElementById('startPage').classList.add('hidden');
+            document.getElementById('adminLogin').classList.remove('hidden');
+        }
+
+        function showEmployeeLogin() {
+            document.getElementById('startPage').classList.add('hidden');
+            document.getElementById('employeeLogin').classList.remove('hidden');
+        }
+
+        function showStartPage() {
+            document.getElementById('adminLogin').classList.add('hidden');
+            document.getElementById('employeeLogin').classList.add('hidden');
+            document.getElementById('startPage').classList.remove('hidden');
+        }
+
+        document.getElementById('chooseAdmin').addEventListener('click', showAdminLogin);
+        document.getElementById('chooseEmployee').addEventListener('click', showEmployeeLogin);
+
+        document.getElementById('adminLoginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            const error = document.getElementById('adminLoginError');
+            error.textContent = '';
+
+            // Check if username and password match any admin user
+            if (
+                (username === users.admin.username && password === users.admin.password) ||
+                (username === users.user.username && password === users.user.password)
+            ) {
+                window.location.href = 'admin.html';
+            } else {
+                error.textContent = 'Invalid credentials. Please try again.';
+            }
+        });
+
+        document.getElementById('employeeLoginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('employeeUsername').value;
+            const password = document.getElementById('employeePassword').value;
+            const error = document.getElementById('employeeLoginError');
+            error.textContent = '';
+
+            // Check if username and password match any employee user
+            if (
+                (username === users.employee.username && password === users.employee.password) ||
+                (username === users.employeeUser.username && password === users.employeeUser.password)
+            ) {
+                window.location.href = 'employee.html';
+            } else {
+                error.textContent = 'Invalid credentials. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>

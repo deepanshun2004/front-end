@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Admin Dashboard - Employee Progress</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span>
+        </div>
+        <div class="header-right">
+          <span class="material-icons-outlined">notifications</span>
+          <span class="material-icons-outlined">email</span>
+          <span class="material-icons-outlined">account_circle</span>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">inventory</span>TechnCorp
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">dashboard</span> Dashboard
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">inventory_2</span> Products
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">fact_check</span> Inventory
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">add_shopping_cart</span> Purchase Orders
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">shopping_cart</span> Sales Orders
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">poll</span> Reports
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">settings</span> Settings
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">DASHBOARD</p>
+        </div>
+
+        <div class="main-cards">
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">PRODUCTS</p>
+              <span class="material-icons-outlined text-blue">inventory_2</span>
+            </div>
+            <span class="text-primary font-weight-bold">249</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">PURCHASE ORDERS</p>
+              <span class="material-icons-outlined text-orange">add_shopping_cart</span>
+            </div>
+            <span class="text-primary font-weight-bold">83</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">SALES ORDERS</p>
+              <span class="material-icons-outlined text-green">shopping_cart</span>
+            </div>
+            <span class="text-primary font-weight-bold">79</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">INVENTORY ALERTS</p>
+              <span class="material-icons-outlined text-red">notification_important</span>
+            </div>
+            <span class="text-primary font-weight-bold">56</span>
+          </div>
+        </div>
+
+        <!-- Employee Progress Tracker Section -->
+        <div class="employee-admin">
+          <div class="main-title">
+            <p class="font-weight-bold">EMPLOYEE PROGRESS TRACKER</p>
+          </div>
+
+          <div class="employee-stats">
+            <div class="card" onclick="openModal('employeeModal')">
+              <div class="card-inner">
+                <p class="text-primary">TOTAL EMPLOYEES</p>
+                <span class="material-icons-outlined text-blue">groups</span>
+              </div>
+              <span class="text-primary font-weight-bold">3</span>
+            </div>
+
+            <div class="card" onclick="openModal('leaveModal')">
+              <div class="card-inner">
+                <p class="text-primary">ON LEAVE</p>
+                <span class="material-icons-outlined text-red">event_busy</span>
+              </div>
+              <span class="text-primary font-weight-bold">1</span>
+            </div>
+
+            <div class="card" onclick="openModal('projectModal')">
+              <div class="card-inner">
+                <p class="text-primary">ACTIVE PROJECTS</p>
+                <span class="material-icons-outlined text-orange">assignment</span>
+              </div>
+              <span class="text-primary font-weight-bold">2</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal for Total Employees -->
+        <div id="employeeModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal('employeeModal')">&times;</span>
+            <h2>Total Employees</h2>
+            <ul>
+              <li>Divyam - Employee ID: 101</li>
+              <li>Deepanshu - Employee ID: 102</li>
+              <li>Sumit - Employee ID: 103</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Modal for On Leave -->
+        <div id="leaveModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal('leaveModal')">&times;</span>
+            <h2>On Leave</h2>
+            <ul>
+              <li>Deepanshu - Employee ID: 102</li>
+              <!-- Add more if needed -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- Modal for Active Projects -->
+        <div id="projectModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal('projectModal')">&times;</span>
+            <h2>Active Projects</h2>
+            <ul>
+              <li>Divyam - Project ID: P123</li>
+              <li>Sumit - Project ID: P124</li>
+            </ul>
+          </div>
+        </div>
+        <div class="employee-cards">
+          <a href="divyam.html" class="employee-card">
+              <div class="card-inner">
+                  <div class="employee-info">
+                      <span class="material-icons-outlined">account_circle</span>
+                      <div class="employee-details">
+                          <p class="employee-name">Divyam</p>
+                          <p class="employee-position">Senior Developer</p>
+                      </div>
+                      <span class="status-badge active">Active</span>
+                  </div>
+                  <div class="employee-metrics">
+                      <div class="metric">
+                          <p>Project Progress</p>
+                          <div class="progress-bar">
+                              <div class="progress" style="width: 80%;"></div>
+                          </div>
+                          <span class="progress-text">80%</span>
+                      </div>
+                      <div class="metric-details">
+                          <span>Tasks Completed: 45/56</span>
+                          <span>Hours Logged: 164h</span>
+                      </div>
+                  </div>
+              </div>
+          </a>
+      
+          <a href="deepanshu.html" class="employee-card">
+              <div class="card-inner">
+                  <div class="employee-info">
+                      <span class="material-icons-outlined">account_circle</span>
+                      <div class="employee-details">
+                          <p class="employee-name">Deepanshu</p>
+                          <p class="employee-position">Backend Developer</p>
+                      </div>
+                      <span class="status-badge on-leave">On Leave</span>
+                  </div>
+                  <div class="employee-metrics">
+                      <div class="metric">
+                          <p>Project Progress</p>
+                          <div class="progress-bar">
+                              <div class="progress" style="width: 65%;"></div>
+                          </div>
+                          <span class="progress-text">65%</span>
+                      </div>
+                      <div class="metric-details">
+                          <span>Tasks Completed: 28/40</span>
+                          <span>Hours Logged: 142h</span>
+                      </div>
+                  </div>
+              </div>
+          </a>
+      
+          <a href="sumit.html" class="employee-card">
+              <div class="card-inner">
+                  <div class="employee-info">
+                      <span class="material-icons-outlined">account_circle</span>
+                      <div class="employee-details">
+                          <p class="employee-name">Sumit</p>
+                          <p class="employee-position">Database</p>
+                      </div>
+                      <span class="status-badge active">Active</span>
+                  </div>
+                  <div class="employee-metrics">
+                      <div class="metric">
+                          <p>Project Progress</p>
+                          <div class="progress-bar">
+                              <div class="progress" style="width: 90%;"></div>
+                          </div>
+                          <span class="progress-text">90%</span>
+                      </div>
+                      <div class="metric-details">
+                          <span>Tasks Completed: 68/75</span>
+                          <span>Hours Logged: 176h</span>
+                      </div>
+                  </div>
+              </div>
+          </a>
+      
+          
+      </div>
+        <!-- End Modal Section -->
+
+      </main>
+      <!-- End Main -->
+    </div>
+
+    <script>
+      // Open Modal
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'block';
+      }
+
+      // Close Modal
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+      }
+    </script>
+
+    <style>
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover, .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .modal h2 {
+        font-weight: bold;
+      }
+
+      .modal ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .modal ul li {
+        padding: 5px 0;
+        font-size: 1.1em;
+      }
+
+    </style>
+
+  </body>
+</html>
